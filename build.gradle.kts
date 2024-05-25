@@ -82,7 +82,7 @@ fun Jar.forJDK(versionCode: Int, withDriver: Boolean = true) {
 
     from(
         configurations.runtimeClasspath.get()
-            .filter { it.name.also { println(it) }.endsWith(".jar") }
+            .filter { it.name.endsWith(".jar") }
             .onEach {
                 // get drivers
                 if (withDriver) it.name.run {
@@ -94,7 +94,7 @@ fun Jar.forJDK(versionCode: Int, withDriver: Boolean = true) {
             .map { zipTree(it) }
     )
     archiveFileName =
-        "flume-ng-sql$flumeVersion-$version-jdk$versionCode-${
+        "flume-ng-sql$version-$flumeVersion-jdk$versionCode-${
             if (withDriver) drivers.ifEmpty { listOf("unknown-driver") }.joinToString("&")
             else "no-driver"
         }.jar"
