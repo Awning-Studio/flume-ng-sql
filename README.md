@@ -33,15 +33,11 @@ We have packaged the mainstream `JDK` (11, 17, 21) versions of `Flume v1.11.0` i
 
 If you need to customize the package, please refer to the following:
 
-1. Clone the project to a local computer, and change the `targetJDK` in [`build.gradle.kts`[10]](build.gradle.kts) to your `JDK` version
+1. Clone the project to a local computer, and change the `targetJDK` in [`build.gradle.kts`[9]](build.gradle.kts) to your `JDK` version
    
    ```kotlin
       val targetJDK = Version
    ```
    
-2. Run `shadow/shadowJar` in the `Gradel` task
+2. Run `build/build` in the `Gradel` task
 3. Find the generated `Jar` package in `build/libs`
-
-## Shortage
-
-The `Jar` package is a bit too large, theoretically much smaller than that, but we haven't found a suitable packager.

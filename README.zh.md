@@ -33,15 +33,11 @@
 
 如果您有自定义打包的需求，请参照以下内容：
 
-1. 将项目克隆至本地，更改[`build.gradle.kts`[10]](build.gradle.kts)中的`targetJDK`为您的`JDK`版本
+1. 将项目克隆至本地，更改[`build.gradle.kts`[9]](build.gradle.kts)中的`targetJDK`为您的`JDK`版本
 
    ```kotlin
       val targetJDK = Version
    ```
 
-2. 运行`Gradel`任务中的`shadow/shadowJar`
+2. 运行`Gradel`任务中的`build/build`
 3. 在`build/libs`中找到生成的`Jar`包
-
-## 不足
-
-`Jar`包体量有点过于庞大了，理论上会比这小得多，我们没有找到合适的打包工具。
