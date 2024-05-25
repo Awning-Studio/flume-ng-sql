@@ -5,13 +5,9 @@ Language **English** | [简体中文](README.zh.md)
 Since [flume-ng-sql-source](https://github.com/keedio/flume-ng-sql-source) is no longer being updated,
 we started this project to fill the gap in the new version.
 
-
-Note: The project only supports `JDK 11+`, if your `Java`
-version does not meet this requirement, please go to [flume-ng-sql-source](https://github.com/keedio/flume-ng-sql-source)
-
 ## Usage
 
-1. [Get `Jar` package](#how-to-get-jar) and import it into `Flume`
+1. [Get `Jar` package](#how-to-get-jar) and import it into `Flume lib`
 2. We only need a small amount of **extra** configuration (see [`SQLSource.kt`[29:33]](src/main/kotlin/ink/awning/flume/sql/SQLSource.kt)):
     
    ```
@@ -25,19 +21,18 @@ version does not meet this requirement, please go to [flume-ng-sql-source](https
    
 3. Run `Flume` and if it runs successfully, you will see our [Logo](src/main/kotlin/ink/awning/flume/sql/Logo.kt).
    Because our data is only a source, you can do things like [flume-ng-sql-source](https://github.com/keedio/flume-ng-sql-source)
-   sending it to `Kafka`
+   sending it to `Kafka` consumer
 
 ## How to get Jar
 
-We have packaged the mainstream `JDK` (11, 17, 21) versions of `Flume v1.11.0` in the releases, and the supporting driver is `MySQL`.
+We have packaged the popular `JDK` (8, 11, 17, 21) versions of `Flume v1.11.0` in the [releases](https://github.com/Awning-Studio/flume-ng-sql/releases).
 
 If you need to customize the package, please refer to the following:
 
-1. Clone the project to a local computer, and change the `targetJDK` in [`build.gradle.kts`[9]](build.gradle.kts) to your `JDK` version
+1. Clone the project to a local computer.
+   - Change `flumeVersion` in [`build.gradle.kts`[7]](build.gradle.kts)
+   - Keep the driver dependencies in [`build.gradle.kts`[29:32]](build.gradle.kts).
    
-   ```kotlin
-      val targetJDK = Version
-   ```
-   
-2. Run `build/build` in the `Gradel` task
-3. Find the generated `Jar` package in `build/libs`
+2. Run `build/jar-all` in the `Gradle` task to generate a `Jar` package with all versions of the driver, or `build/jar-all-no-driver` to generate a `Jar` package without a driver.
+   You can also run the corresponding `build/jar[version]` or `build/jar[version]-no-driver` to generate a `Jar` package with a specified `JDK` version.
+3. Find the generated `Jar` package in `build/libs`.
